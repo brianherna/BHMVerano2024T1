@@ -1,8 +1,11 @@
-def frecuencia_relativa(frecuencias, total_datos):
-    frec_relativa = [frec / total_datos for frec in frecuencias]
-    return frec_relativa
+def frecuencia_relativa(frec_abs, total):
+    frec_rel = [round(abs / total, 2) for abs in frec_abs]
+    return frec_rel
 
-def frecuencia_acumulada(frecuencias):
-    total_datos = sum(frecuencias)
-    frec_acumulada = [sum(frecuencias[:i+1]) / total_datos * 100 for i in range(len(frecuencias))]
-    return frec_acumulada
+def frecuencia_acumulada(frec_abs):
+    frec_acum = []
+    acum = 0
+    for abs in frec_abs:
+        acum += abs
+        frec_acum.append(acum)
+    return frec_acum
