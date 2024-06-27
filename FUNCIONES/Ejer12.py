@@ -64,18 +64,17 @@ def crear_tabla(datos):
 
     return tabla
 
-def plot_grafOjiva(marcas_clase, valores_ref_eje, facum):
+def plot_grafOjiva(marcas_clase, facum):
     """
     Función para dibujar una ojiva que muestra la frecuencia acumulada por marca de clase.
     
     Parámetros:
-    - marcas_clase (list): lista de strings que representan las marcas de clase
-    - valores_ref_eje (list): lista de números que representan los valores de referencia para cada marca de clase
+    - marcas_clase (list): lista de valores que representan las marcas de clase
     - facum (list): lista de números que representan la frecuencia acumulada para cada marca de clase
     """
     
     # Crear listas para los datos de la ojiva
-    datos_x_ojiva = [0] + valores_ref_eje
+    datos_x_ojiva = [0] + list(range(1, len(marcas_clase) + 1))
     datos_y_ojiva = [0] + facum
 
     # Crear una figura con un tamaño específico
@@ -93,7 +92,7 @@ def plot_grafOjiva(marcas_clase, valores_ref_eje, facum):
              markeredgewidth=1.5) 
 
     # Etiquetas para el eje x
-    plt.xticks(valores_ref_eje, marcas_clase, fontsize=10)
+    plt.xticks(datos_x_ojiva, [f"{marca:.2f}" for marca in [0] + marcas_clase], fontsize=10)
     
     # Título y etiquetas para los ejes
     plt.xlabel("Marcas de clase", fontsize=15)
@@ -146,4 +145,3 @@ def plot_grafHist(frecuencias_relativas, marcas_clase, marcas_texto):
     
     # Mostrar el gráfico
     plt.show()
-
